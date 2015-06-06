@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+ 
+
+<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+<constant name="struts.custom.i18n.resources" value="resource"></constant>
+	<package name="default" extends="struts-default">
+	<interceptors>
+		<interceptor name="" class="">
+			<param name=""></param>
+		</interceptor>
+	</interceptors>
+		<action name="goIndex" >
+			<result>index.jsp</result>
+		</action>
+		<action name="test" class="test">
+		<interceptor-ref name="fileUpload">
+			 <!-- 文件过滤 -->
+                <param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg</param>
+                <!-- 文件大小, 以字节为单位 -->
+                <param name="maximumSize">1025956</param>
+		</interceptor-ref>
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result>suc.jsp</result>
+			<result name="input">index.jsp</result>
+		</action>
+	</package>
+</struts>
